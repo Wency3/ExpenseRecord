@@ -9,16 +9,16 @@ namespace ExpenseRecord.Services
         private readonly IMongoCollection<Models.ExpenseRecord> _ExpenseRecordsCollection;
 
         public ExpenseRecordService(
-            IOptions<ExpenseRecordDatabaseSettings> ToDoItemStoreDatabaseSettings)
+            IOptions<ExpenseRecordDatabaseSettings> ExpenseRecordDatabaseSettings)
         {
             var mongoClient = new MongoClient(
-                ToDoItemStoreDatabaseSettings.Value.ConnectionString);
+                ExpenseRecordDatabaseSettings.Value.ConnectionString);
 
             var mongoDatabase = mongoClient.GetDatabase(
-                ToDoItemStoreDatabaseSettings.Value.DatabaseName);
+                ExpenseRecordDatabaseSettings.Value.DatabaseName);
 
             _ExpenseRecordsCollection = mongoDatabase.GetCollection<Models.ExpenseRecord>(
-                ToDoItemStoreDatabaseSettings.Value.CollectionName);
+                ExpenseRecordDatabaseSettings.Value.CollectionName);
         }
         public async Task CreateAsync(ExpenseRecordDTO newExpenseRecord)
         {
