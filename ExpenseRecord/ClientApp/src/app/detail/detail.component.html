@@ -1,0 +1,32 @@
+<div class="itemcontainer" >
+    <div *ngFor="let item of itemsDisplay" >
+        <!-- {{itemsDisplay.length}}
+        {{itemsDisplay[0].Description}} -->
+        Description:{{item.description}} 
+
+        Type:{{item.type}}
+
+        Amount:{{item.amount}}
+
+        Date:{{item.date}}
+        <button (click)="delete(item.id)">delete</button>
+        <hr>
+    </div>
+</div>
+<br>
+<br>
+
+<div></div>
+<div><button (click)="toggleForm()">Add</button></div>
+<div *ngIf="showForm">
+  <label>Description:</label><input [(ngModel)]="add_item.description" placeholder="Description">
+  <br>
+  <label>Type:</label><input [(ngModel)]="add_item.type" placeholder="Type">
+  <br>
+  <label>Amount:</label><input [(ngModel)]="add_item.amount" placeholder="Amount">
+  <br>
+  <button (click)="add()">Submit</button>
+  
+</div>
+
+

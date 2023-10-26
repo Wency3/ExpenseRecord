@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IExpenseRecordService, ExpenseRecordService>();
 builder.Services.Configure<ExpenseRecordDatabaseSettings>(builder.Configuration.GetSection("ExpenseRecordDatabase"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,7 +22,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.MapControllerRoute(
     name: "default",

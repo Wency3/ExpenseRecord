@@ -6,7 +6,7 @@ namespace ExpenseRecord.Services
 {
     public class ExpenseRecordService : IExpenseRecordService
     {
-        private readonly IMongoCollection<Models.ExpenseRecord> _ExpenseRecordsCollection;
+        private readonly IMongoCollection<Models.ExpenseRecords> _ExpenseRecordsCollection;
 
         public ExpenseRecordService(
             IOptions<ExpenseRecordDatabaseSettings> ExpenseRecordDatabaseSettings)
@@ -17,12 +17,12 @@ namespace ExpenseRecord.Services
             var mongoDatabase = mongoClient.GetDatabase(
                 ExpenseRecordDatabaseSettings.Value.DatabaseName);
 
-            _ExpenseRecordsCollection = mongoDatabase.GetCollection<Models.ExpenseRecord>(
+            _ExpenseRecordsCollection = mongoDatabase.GetCollection<Models.ExpenseRecords>(
                 ExpenseRecordDatabaseSettings.Value.CollectionName);
         }
         public async Task CreateAsync(ExpenseRecordDTO newExpenseRecord)
         {
-            var item = new Models.ExpenseRecord
+            var item = new ExpenseRecords
             {
                 Description = newExpenseRecord.Description,
                 Type = newExpenseRecord.Type,

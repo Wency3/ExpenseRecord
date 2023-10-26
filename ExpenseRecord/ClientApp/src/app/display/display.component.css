@@ -1,0 +1,15 @@
+.firstbox {
+    height: 1000px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+}
+.secondbox {
+    height: 70%;
+    width: 45%;
+    border-style: solid;
+    border-color: rgb(185, 174, 174);
+    margin: 20px;
+    border-radius: 8px;
+
+}
