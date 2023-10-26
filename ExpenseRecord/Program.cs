@@ -1,9 +1,13 @@
+using ExpenseRecord;
+using ExpenseRecord.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSingleton<IExpenseRecordService, ExpenseRecordService>();
+builder.Services.Configure<ExpenseRecordDatabaseSettings>(builder.Configuration.GetSection("ExpenseRecordDatabase"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
